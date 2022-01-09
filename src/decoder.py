@@ -29,7 +29,8 @@ def decoder():
         aec_info.bs_write(pix, 1)
 
     aec_info.output_bs("dec.yuv")
-    
+
     bs.close
+
 
 decoder()

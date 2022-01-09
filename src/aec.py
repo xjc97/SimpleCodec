@@ -1,14 +1,15 @@
-from os import path
 import struct
 import os
+
+
 class AEC:
     'class of aec'
     bs = []
 
-#encoder func
+# encoder func
     def bs_write(self, elemt, byte_size):
         'binary sytex'
-        dic = {1:'B', 2:'H', 4:'I'}
+        dic = {1: 'B', 2: 'H', 4: 'I'}
         fmt = dic[byte_size]
         self.bs.append(struct.pack(fmt, elemt))
 
@@ -30,10 +31,10 @@ class AEC:
         for bit in pic_info.v_org:
             self.bs_write(bit, 1)
 
-#decoder func
+# decoder func
     def translate_bin(self, bin, byte_size):
         'trans bin to elemt'
-        dic = {1:'B', 2:'H', 4:'I'}
+        dic = {1: 'B', 2: 'H', 4: 'I'}
         fmt = dic[byte_size]
         elemt = struct.unpack(fmt, bin)
         return elemt[0]

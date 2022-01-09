@@ -2,6 +2,7 @@ import struct
 import aec
 import enc
 
+
 class PIC_INFO:
     'store the input pic file info'
     y_org = []
@@ -37,6 +38,7 @@ class PIC_INFO:
 
         yuv.close()
 
+
 def enc_start(pic_info, aec_info):
     'start encoder'
     # read yuv and split to luma and chroma
@@ -47,9 +49,11 @@ def enc_start(pic_info, aec_info):
     aec_info.bs_write(pic_info.pic_height, 2)
     aec_info.bs_write(pic_info.frame, 2)
 
+
 def enc_core(enc_info, pic_info, aec_info):
     'start encode'
     enc_info.enc_one_frame(aec_info, pic_info)
+
 
 def enc_end(aec_info, pic_info):
     'encoder finish, output recon and bitstream'
@@ -57,7 +61,6 @@ def enc_end(aec_info, pic_info):
     del pic_info
     del aec_info
 
-    
 
 def encoder():
     # encoder top
@@ -68,12 +71,6 @@ def encoder():
     enc_start(pic_info, aec_info)
     enc_core(enc_info, pic_info, aec_info)
     enc_end(aec_info, pic_info)
-
-
-
-
-
-
 
 
 encoder()
